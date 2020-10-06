@@ -7,7 +7,26 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "commit": "npx git-cz",
+    "release": "npx semantic-release"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts,tsx}": [
+      "yarn lint",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -17,6 +36,11 @@
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.1.1",
+    "@semantic-release/release-notes-generator": "^9.0.1",
     "@types/chai": "^4.2.11",
     "@types/mocha": "^5.2.4",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
@@ -35,12 +59,15 @@
     "@vue/eslint-config-typescript": "^5.0.2",
     "@vue/test-utils": "^2.0.0-0",
     "chai": "^4.1.2",
+    "conventional-changelog-conventionalcommits": "^4.4.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^7.0.0-0",
+    "lint-staged": "^10.4.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
     "typescript": "~3.9.3"
