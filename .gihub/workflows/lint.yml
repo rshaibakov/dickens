@@ -26,8 +26,11 @@ jobs:
     - name: Build
       run: yarn build
 
-    - name: Lint
-      run: yarn lint
+    - name: Lint script
+      run: yarn lint:script
+
+    - name: Lint style
+      run: yarn lint:style
 
     - name: Test
       run: yarn test:unit
