@@ -6,7 +6,7 @@
   <router-view/>
 </template>
 
-<style lang="scss">
+<style lang="postcss">
 #app {
   color: #2c3e50;
   font-family: Avenir, Helvetica, Arial, sans-serif;
