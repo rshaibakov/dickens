@@ -7,13 +7,18 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint",
+    "lint:script": "vue-cli-service lint",
+    "lint:style": "stylelint 'src/**/*.{vue,html,css}' --fix",
     "commit": "npx git-cz",
     "release": "npx semantic-release"
   },
   "lint-staged": {
     "*.{js,jsx,vue,ts,tsx}": [
-      "yarn lint",
+      "yarn lint:script",
+      "git add"
+    ],
+    "*.{vue,html,css}": [
+      "yarn lint:style",
       "git add"
     ]
   },
@@ -70,6 +75,10 @@
     "lint-staged": "^10.4.0",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
+    "stylelint": "^13.7.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
     "typescript": "~3.9.3"
   }
 }
